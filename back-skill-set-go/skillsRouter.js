@@ -7,21 +7,21 @@ const router = express.Router()
 
 router.post("/api/skills/", async (req, res) => {
   const keywords = req.body.keywords
-  res.json(keywords)
-  return
+  /* res.send(keywords)
+  return */
   try {
     const response = await axios.post("https://api.openai.com/v1/chat/completions", {
       model: "gpt-3.5-turbo",
       messages: [
         {
           "role": "user", 
-          "content": `A sample resume experience line with the following keywords: ${keywords.join(', ')}`
+          "content": `One sample resume experience line with the keywords: ${keywords.join(', ')}`
         }
       ],
       max_tokens: 70,
-      temperature: 0.5,
+      temperature: 0.25,
       top_p: 1,
-      n: 3,
+      n: 2,
       stream: false
     }, {
       headers: {
@@ -37,9 +37,7 @@ router.post("/api/skills/", async (req, res) => {
     }
 
     const choices = response.data.choices
-    console.log('response data:', response.data)
-  
-    res.status(200).send(choices.map(c => c.message))
+    res.status(200).send(choices.map(c => c.message.content))
   } catch (error) {
     console.log(error)
     res.status(500).send("Something went wrong")

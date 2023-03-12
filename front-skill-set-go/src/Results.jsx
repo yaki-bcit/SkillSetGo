@@ -25,7 +25,7 @@ export default function Results ({ results, handleReset }) {
       {results.length === 0 ? (
         <Generating />
       ) : (
-        <>
+        <div className='h-full overscroll-y-auto flex flex-col'>
           <div className='page-heading pt-4 mb-4'>
             <h1 className='text-3xl'>
               SkillSetGo!
@@ -75,7 +75,7 @@ export default function Results ({ results, handleReset }) {
               Go back to selecting skills
             </button>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

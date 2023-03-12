@@ -40,6 +40,7 @@ export default function Form({ handleSubmit }) {
 
   return (
     <div className="Form max-h-full sm:min-h-[600px] h-full md:h-auto flex flex-col justify-center md:rounded-2xl px-4 pt-4 sm:px-8 bg-violet-50 dark:bg-[#15002b]">
+      <div className='h-full overscroll-y-auto flex flex-col'>
         <div className='page-heading pt-4 mb-4'>
           <h1 className='text-3xl'>
             SkillSetGo!
@@ -122,6 +123,7 @@ export default function Form({ handleSubmit }) {
             </button>
           </div>
         </div>
+      </div>
     </div>
   )
 }

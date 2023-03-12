@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Form from './Form'
 import Results from './Results'
 import './App.css'
@@ -11,21 +10,21 @@ function App() {
   const [showResults, setShowResults] = useState(false)
 
   const handleSubmit = async (keywords) => {
-    console.log('handleSubmit', keywords)
     toggleShowResult()
     const res = await axios.post('/api/skills', {
       keywords,
     })
-    console.log(res.data)
 
-    setTimeout(() => {
+    setResults(res.data)
+
+    /* setTimeout(() => {
       setResults(
         [
           "Developed a high-performance Next.js web application using React, Redux, and TypeScript that improved page loading speed by 50% and reduced bounce rates by 25%.",
           "Created dynamic user interfaces and seamless navigation for a Next.js e-commerce application, which resulted in a 20% increase in conversion rates and a 15% increase in revenue.",
         ]
       )
-    }, 2000)
+    }, 2000) */
   }
 
   const toggleShowResult = () => {
